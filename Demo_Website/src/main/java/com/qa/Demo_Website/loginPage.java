@@ -15,10 +15,17 @@ public class loginPage {
 	@FindBy(xpath = "/html/body/table/tbody/tr/td[1]/form/div/center/table/tbody/tr/td[1]/table/tbody/tr[3]/td[2]/p/input")
 	private WebElement clicktestLogin;
 
-	public void attemptLogin(String user, String Pass) {
+	public void attemptLogin(String UserName, String password) {
+		
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		enterUsername.sendKeys("Papi");
-		enterPassword.sendKeys("Papi0007");
+		enterUsername.sendKeys(UserName);
+		enterPassword.sendKeys(password);
 		clicktestLogin.click();
 
 	}

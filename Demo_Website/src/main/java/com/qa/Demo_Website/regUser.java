@@ -14,17 +14,25 @@ public class regUser {
 
 	@FindBy(xpath = "/html/body/table/tbody/tr/td[1]/form/div/center/table/tbody/tr/td[1]/div/center/table/tbody/tr[3]/td[2]/p/input")
 	private WebElement clickSave;
-	
+
 	@FindBy(xpath = "/html/body/div/center/table/tbody/tr[2]/td/div/center/table/tbody/tr/td[2]/p/small/a[4]")
 	private WebElement clickLogin;
 
-	public void clickAddUser(String user, String Pass) {
+	public void clickAddUser(String UserName, String password) {
+		
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		regUsername.sendKeys("Papi");
-		regPassword.sendKeys("Papi007");
+		regUsername.sendKeys(UserName);
+		regPassword.sendKeys(password);
 		clickSave.click();
 		clickLogin.click();
 		
+
 
 	}
 }
