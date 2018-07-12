@@ -14,11 +14,8 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-
-
 public class tourtest {
-	
-	
+
 	WebElement element;
 	WebDriver driver;
 
@@ -33,53 +30,43 @@ public class tourtest {
 		System.setProperty("webdriver.chrome.driver", "C:/Development/chromedriver.exe");
 
 		driver = new ChromeDriver();
-	
-	
-	
+
 	}
+
 	@After
 	public void teardown() {
-		
-		
+
 		extent.endTest(test);
 		extent.flush();
 		driver.quit();
 	}
-	
-	
+
 	@Test
-	
-	
-	
+
 	public void test() {
-		
+
 		driver.get(constant.mercury);
 		driver.manage().window().maximize();
-		test = extent.startTest("Register User"); 
-		test.log(LogStatus.INFO, "Start" );
+		test = extent.startTest("Register User");
+		test.log(LogStatus.INFO, "Start");
 		home start = PageFactory.initElements(driver, home.class);
 		resgisterpage register = PageFactory.initElements(driver, resgisterpage.class);
 		loginpage login = PageFactory.initElements(driver, loginpage.class);
-		
+
 		start.registerPAGE();
 		register.registers();
 		start.login();
 		login.login();
-		if(driver.getTitle().equals("Find a Flight: Mercury Tours:")) {
-			
-			test.log(LogStatus.PASS,"Passed" );
-			
-		}
-		else {
-			
+		if (driver.getTitle().equals("Find a Flight: Mercury Tours:")) {
+
+			test.log(LogStatus.PASS, "Passed");
+
+		} else {
+
 			test.log(LogStatus.FAIL, "Fail");
 		}
 		assertEquals("Find a Flight: Mercury Tours:", driver.getTitle());
-		
-		
-		
+
 	}
-	
-	
 
 }

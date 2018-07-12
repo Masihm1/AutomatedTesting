@@ -15,7 +15,7 @@ public class home {
 		
 		registerlink.click();
 		
-		
+
 		
 	}
 	public void login() {
