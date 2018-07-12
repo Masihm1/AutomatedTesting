@@ -1,0 +1,43 @@
+package com.qa.StackExample;
+
+import static junit.framework.Assert.assertEquals;
+
+import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class StackSteps {
+
+	private StackExample myStack;
+	private Object pushed;// add
+	private Object popped; // remove
+
+
+	@Given("^an empty stack$")
+	public void an_empty_stack() {
+		myStack = new StackExample();
+	}
+	
+	@When("^I push an item into the stack$")
+	public void I_push_an_item_into_the_stack() {
+		pushed = new Object();
+		myStack.push(pushed);
+	}
+	
+	@And("^I push another item into the stack$")
+	public void I_push_another_item_into_the_stack() {
+		I_push_an_item_into_the_stack();
+		pushed = new Object();
+		myStack.push(pushed);
+		
+	}
+	
+	@Then("^the stack contains two items$")
+	public void the_stack_contains_two_items() {
+		assertEquals(1, myStack.size());
+	}
+	}
+	
+

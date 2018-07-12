@@ -1,0 +1,7 @@
+package com.qa.PassionateTea;
+
+import junit.framework.TestCase;
+
+public class TeaTesting extends TestCase {
+
+}

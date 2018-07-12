@@ -1,0 +1,63 @@
+package com.qa.PassionateTea;
+
+import static org.junit.Assert.assertEquals;
+import org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
+
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.When;
+
+public class TeaTest {
+
+	WebElement element;
+	WebDriver driver;
+
+	// initialize ExtentReports with a file path
+	ExtentReports extent = new ExtentReports("C:/Users/Admin/Downloads/DemoTestReport.html", true);
+
+	ExtentTest test;
+
+	@Before
+	public void setUp() {
+
+		System.setProperty("webdriver.chrome.driver", "C:/Development/chromedriver.exe");
+
+		driver = new ChromeDriver();
+
+	}
+
+	// @After
+	// public void teardown() {
+	//
+	// extent.endTest(test);
+	// extent.flush();
+	// driver.quit();
+
+	// }
+
+	@Test
+
+	@Given("^the correct web address$")
+	public void the_correct_web_address() {
+		driver.get(constant.ptc);
+		driver.manage().window().maximize();
+		assertEquals("http://www.practiceselenium.com/welcome.html", constant.ptc);
+	}
+
+	@When("^I navigate to the 'Menu' page$")
+	public void i_navigate_to_the_Menu_page() {
+		@FindBy(xpath = "//*[@id=\"wsb-nav-00000000-0000-0000-0000-000450914915\"]/ul/li[3]/a")
+		private WebElement menuButton;
+		menuButton.click();
+
+	}
+
+}
